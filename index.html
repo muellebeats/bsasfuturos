@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Animación de Velas</title>
+  <style>
+    body {
+      background: #f5f5f5;
+      font-family: sans-serif;
+    }
+    .chart {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      height: 300px;
+      width: 600px;
+      border: 1px solid #ccc;
+      margin: 50px auto;
+      background: white;
+      position: relative;
+    }
+    /* Contenedor de cada vela */
+    .candle {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    /* ----- Estilo para la vela DOJI ----- */
+    .candle.doji .body {
+      width: 10px;
+      height: 2px;
+      background: black;
+      margin: 0 auto;
+    }
+    .candle.doji .wick {
+      width: 2px;
+      background: black;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .candle.doji .wick.top {
+      height: 20px;
+      top: -20px;
+    }
+    .candle.doji .wick.bottom {
+      height: 20px;
+      bottom: -20px;
+    }
+    /* ----- Estilo para las velas ALCISTAS ----- */
+    .candle.bullish .body {
+      width: 20px;
+      height: 60px;
+      background: green;
+      border: 1px solid darkgreen;
+      margin: 0 auto;
+    }
+    .candle.bullish .wick {
+      width: 2px;
+      background: darkgreen;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .candle.bullish .wick.top {
+      height: 20px;
+      top: -20px;
+    }
+    .candle.bullish .wick.bottom {
+      height: 20px;
+      bottom: -20px;
+    }
+    /* Animación de aparición (slide up) */
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .candle {
+      animation: slideUp 1s ease-out forwards;
+    }
+    /* Secuencia: vela 1 sin delay, vela 2 con 1s, vela 3 con 2s y vela 4 con 3s */
+    .candle:nth-child(1) { animation-delay: 0s; }
+    .candle:nth-child(2) { animation-delay: 1s; }
+    .candle:nth-child(3) { animation-delay: 2s; }
+    .candle:nth-child(4) { animation-delay: 3s; }
+  </style>
+</head>
+<body>
+  <div class="chart">
+    <!-- Vela Doji -->
+    <div class="candle doji">
+      <div class="wick top"></div>
+      <div class="body"></div>
+      <div class="wick bottom"></div>
+    </div>
+    <!-- Primera vela alcista -->
+    <div class="candle bullish">
+      <div class="wick top"></div>
+      <div class="body"></div>
+      <div class="wick bottom"></div>
+    </div>
+    <!-- Segunda vela alcista -->
+    <div class="candle bullish">
+      <div class="wick top"></div>
+      <div class="body"></div>
+      <div class="wick bottom"></div>
+    </div>
+    <!-- Tercera vela alcista -->
+    <div class="candle bullish">
+      <div class="wick top"></div>
